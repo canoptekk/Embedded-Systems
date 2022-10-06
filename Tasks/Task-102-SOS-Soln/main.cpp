@@ -38,10 +38,31 @@ int main()
     //Repeat everything "forever" (until the power is removed or the chip is reset)
     while (true)
     {
-        sierra();       // Send 'S'
-        oscar();        // Send 'O'
-        sierra();       // Send 'S'
-        wordSpace();    // Send space after word
+        buzz.playTone("C");     // Play tone
+        wait_us(150000);
+        buzz.rest();
+        buzz.playTone("D");     // Play tone
+        wait_us(150000);
+        buzz.rest();
+        buzz.playTone("E");     // Play tone
+        wait_us(150000);
+        buzz.rest();
+        buzz.playTone("F");     // Play tone
+        wait_us(150000);
+        buzz.rest();
+        buzz.playTone("G");     // Play tone
+        wait_us(150000);
+        buzz.rest();
+        buzz.playTone("A");     // Play tone
+        wait_us(150000);
+        buzz.rest();
+        buzz.playTone("B");     // Play tone
+        wait_us(150000);
+        buzz.rest();
+        buzz.playTone("C");     // Play tone
+        wait_us(150000);
+        buzz.rest();            // Stop tone
+        wait_us(1500000);
     }
 }
 
