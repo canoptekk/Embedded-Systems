@@ -31,7 +31,10 @@ int main()
         // makes the buzzer play a C tone
         printf("Hello World\n");
         // Write to serial terminal on host PC
-        
+        lcd.printf("Hello World");
+        lcd.locate(1, 0);   //Row 1, Col 0
+        lcd.printf("ELEC143");
+        //writes to LCD screen
 
         wait_us(1000000);
         // wait 1 second
@@ -42,8 +45,8 @@ int main()
         // assinging a value of 0 or "off" to greenLED
         buzz.rest();
         // pauses the buzzer
-
-
+        lcd.cls();
+        // Clear the LCD screen
 
         wait_us(1000000);
         // wait 1 second
