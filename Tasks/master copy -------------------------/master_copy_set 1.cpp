@@ -1,6 +1,7 @@
 #include "uop_msb.h"
 using namespace uop_msb;
 LCD_16X2_DISPLAY lcd;
+#define WAIT_TIME_MS 1000 
 // this is required to use the boards different parts
 
 // this is how you comment
@@ -10,6 +11,12 @@ wait_us(1000000);
 
 DigitalOut greenLED(LED1);
 // setting the variable "greenLED" to affect the boards "LED1"
+DigitalOut led2(LED2);
+DigitalOut led3(LED3);
+//setting other leds to be used via the variables led2 and led3
+
+BusOut lights(PC_2, PC_3, PC_6);
+//BusOut lights, using multiple outputs at once
 
 int main()
 // The main function - all executable C / C++ applications have a main function. This is our entry point in the software
@@ -26,6 +33,17 @@ int main()
 
         //---------------BASIC INPUTS
 
+        char c1;
+        //setting the variable as a char
+        printf("\n\nPress a key\n");
+        //prompt
+        c1 = getchar();
+        //getting the input in
+        printf("You entered character %c which has the ASCII code %d\n", c1, c1);
+        //terminal input displayed
+
+
+
 
 
 
@@ -41,6 +59,18 @@ int main()
         lcd.locate(1, 0);   //Row 1, Col 0
         lcd.printf("ELEC143");
         //writes to LCD screen
+
+        int count = 0;
+        while (count <= 7) 
+        {
+            printf("count = %d\n", count);
+            lights = count;
+            wait_us(1000000);
+
+            count = count + 1;
+        }
+        //binary busout output
+
 
         wait_us(1000000);
         // wait 1 second
