@@ -6,6 +6,11 @@ LCD_16X2_DISPLAY lcd;
 
 // this is how you comment
 
+/*
+this is how you make a longer comment
+ */
+
+
 wait_us(1000000);
 // waits 1 second
 
@@ -17,6 +22,13 @@ DigitalOut led3(LED3);
 
 BusOut lights(PC_2, PC_3, PC_6);
 //BusOut lights, using multiple outputs at once
+
+//PortOut lights(PortC, 0b0000000001001100);
+//this would use the same lights as the Bus out
+//the difference being, between the outputs of Busout there is the smallest delay, with Port out the switch is perfectly simultanious
+
+
+
 
 int main()
 // The main function - all executable C / C++ applications have a main function. This is our entry point in the software
@@ -34,7 +46,7 @@ int main()
         //---------------BASIC INPUTS
 
         char c1;
-        //setting the variable as a char
+        //setting the variable as a char, can instead be int for number inputs or other variable types
         printf("\n\nPress a key\n");
         //prompt
         c1 = getchar();
@@ -42,6 +54,8 @@ int main()
         printf("You entered character %c which has the ASCII code %d\n", c1, c1);
         //terminal input displayed
 
+        flushInputBuffer();
+        //Clear out the serial port (keyboard)
 
 
 
@@ -59,6 +73,8 @@ int main()
         lcd.locate(1, 0);   //Row 1, Col 0
         lcd.printf("ELEC143");
         //writes to LCD screen
+        printf("You \n");
+        //prints to the terminal
 
         int count = 0;
         while (count <= 7) 
@@ -70,12 +86,29 @@ int main()
             count = count + 1;
         }
         //binary busout output
+        //this counts up in binary across the three outputs it has
+
+        /*
+        lights = 0;
+
+        while (true)
+        {
+            lights = 0b0000000000000100;
+            wait_us(1000000);
+            lights = 0b0000000000001000;
+            wait_us(1000000);
+            lights = 0b0000000001000000;
+            wait_us(1000000);                
+        }
+        */
+        //this is the same as the bus out, however using the port out function instead
+        //this will switch between each light in succession instead.
 
 
         wait_us(1000000);
         // wait 1 second
 
-
+       
 
         greenLED = 0;
         // assinging a value of 0 or "off" to greenLED
@@ -143,6 +176,26 @@ int main()
 
 
 
+        //-------------------------------Loop types--------------------------
+
+
+        /*
+
+        while(condition to meet)
+        {
+            execute bracketed code
+        }
+
+        //an example of a while loop, checks a condition is met and repeats until the condition is broken
+        //it is very easy to make an infinite loop if there is no way of breaking the orginial condition, or no out clause
+
+        */
+
+
+
+        /*
+
+        */
 
     }
 
