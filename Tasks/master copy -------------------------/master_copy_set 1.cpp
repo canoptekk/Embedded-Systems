@@ -166,6 +166,9 @@ int main()
         //It stores real numbers with precision upto 15 decimal places. It takes 8 bytes of memory
 
 
+        count++ ;
+        //increments count by 1, used in loops a lot  
+
         //Size of a char is 1 bytes
         //Size of a short is 2 bytes
         //Size of a int is 4 bytes
@@ -177,6 +180,27 @@ int main()
 
 
         //-------------------------------Loop types--------------------------
+
+        count++ ;
+        //increments count by 1, used in loops a lot, -- works to increment down
+
+        /*
+
+        to preface this section, ive put the boolean operators here, which are used within the expressions for the loops
+
+        // == equal
+        // != not equal
+        // < less than
+        // <= less than or equal to
+        // > greater than
+        // >= greater than or equal to
+        // && conditional and
+        // || conditional or
+
+        // expressions can have multiple conditionals
+
+        */
+
 
 
         /*
@@ -193,9 +217,40 @@ int main()
 
 
 
+
         /*
+        do {
+
+        //code block
+        
+        }while (expression);
+
+        //the do while loop executes once, and then repeats while the the expression is true 
 
         */
+
+
+
+        /*
+        
+        int ___; // variable used in for loop
+
+        for(initialisation statement, condition for entry, preform after every loop){
+        
+        //a common example for the expressions inside is (n=0; n<10; n++)
+        // n starts at 0, the loop repeats if n is less than 10, and after each loop is incremented by one
+
+        }
+        */
+        
+
+
+        /*
+        
+        */
+
+
+        //if, while, do and for can all be nested
 
     }
 
