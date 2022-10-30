@@ -53,6 +53,19 @@ int main()
         //getting the input in
         printf("You entered character %c which has the ASCII code %d\n", c1, c1);
         //terminal input displayed
+        DigitalIn sw1(D3);
+        //allows you to get switch information from D3, under the variable sw1
+        DigitalIn sw2(D4);
+        //allows you to get switch information from D4, under the variable sw2
+        BusIn switches(D3,D4);
+        //same principle as bus out but for inputs, 
+
+
+
+
+
+
+
 
         flushInputBuffer();
         //Clear out the serial port (keyboard)
@@ -63,28 +76,28 @@ int main()
 
         //---------------BASIC OUTPUTS----------------------
 
-        greenLED = 1;
-        // assigning a value of 1 or "on" to greenLED
-        buzz.playTone("C");
-        // makes the buzzer play a C tone
-        printf("Hello World\n");
-        // Write to serial terminal on host PC
-        lcd.printf("Hello World");
-        lcd.locate(1, 0);   //Row 1, Col 0
-        lcd.printf("ELEC143");
-        //writes to LCD screen
-        printf("You \n");
-        //prints to the terminal
+        DigitalOut greenLED(LED1);
+        // setting the variable "greenLED" to affect the boards "LED1"
+        DigitalOut led2(LED2);
+        DigitalOut led3(LED3);
+        //setting other leds to be used via the variables led2 and led3
+
+        BusOut lights(PC_2, PC_3, PC_6);
+        //BusOut lights, using multiple outputs at once
+
+        //PortOut lights(PortC, 0b0000000001001100);
+        //this would use the same lights as the Bus out
+        //the difference being, between the outputs of Busout there is the smallest delay, with Port out the switch is perfectly simultanious
 
         int count = 0;
-        while (count <= 7) 
-        {
-            printf("count = %d\n", count);
-            lights = count;
-            wait_us(1000000);
+            while (count <= 7) 
+            {
+                printf("count = %d\n", count);
+                lights = count;
+                wait_us(1000000);
 
-            count = count + 1;
-        }
+                count = count + 1;
+            }
         //binary busout output
         //this counts up in binary across the three outputs it has
 
@@ -103,6 +116,21 @@ int main()
         */
         //this is the same as the bus out, however using the port out function instead
         //this will switch between each light in succession instead.
+
+
+
+        greenLED = 1;
+        // assigning a value of 1 or "on" to greenLED
+        buzz.playTone("C");
+        // makes the buzzer play a C tone
+        printf("Hello World\n");
+        // Write to serial terminal on host PC
+        lcd.printf("Hello World");
+        lcd.locate(1, 0);   //Row 1, Col 0
+        lcd.printf("ELEC143");
+        //writes to LCD screen
+        printf("You \n");
+        //prints to the terminal
 
 
         wait_us(1000000);
@@ -165,6 +193,8 @@ int main()
         printf("The value of pi is approximately %lf\n", pi_double);
         //It stores real numbers with precision upto 15 decimal places. It takes 8 bytes of memory
 
+        //variables can overflow and go from the highest to the lowest value
+
 
         count++ ;
         //increments count by 1, used in loops a lot  
@@ -176,6 +206,18 @@ int main()
         //Size of a long long is 8 bytes
         //Size of a float is 4 bytes
         //Size of a double is 8 bytes
+
+
+        // + - / * (% modulus) are all operators on variables
+        //a&b = bitwise and (1011 & 1001 = 1001)
+        //a|b = bitwise or (1011 | 1001 = 1011)
+        //a^b = bitwise xor (1011 ^ 1001 = 0010)
+        //a<<b = left shift (00110101 << 1 = 01101010)
+        //a>>b = right shift (10110001 >> 1 = 01011000)
+        // ~a = not a (~1011 = 0100)
+
+        unsigned char ucbyte = 0b10100011;
+        ucbyte ^= 0b01000000; //toggle pin 7 using Xor
 
 
 
@@ -194,10 +236,16 @@ int main()
         // <= less than or equal to
         // > greater than
         // >= greater than or equal to
-        // && conditional and
+
+        // && conditional and 
         // || conditional or
+        // ! conditional not
+
 
         // expressions can have multiple conditionals
+
+        //for example if (_____) && (_____) &&...
+        //bodmas order for these is ! , &&, then ||, use extra brackets to sort order if nessisary
 
         */
 
@@ -244,13 +292,113 @@ int main()
         */
         
 
-
         /*
+        if(condition){
+
+            //code block
+
+        }
+
+        //runs code through once, if the condition is met initially
+        //commonly nested within other loops
+
         
         */
 
 
-        //if, while, do and for can all be nested
+
+
+        /*
+        if(condition){
+
+            //code block
+
+        }
+        else
+        {
+
+            //code block
+
+        }
+
+        //runs the primary if statement as long as conditions are met, if not, runs through else clause, both are exclusive
+
+        */
+
+
+
+    
+        /*
+        if(condition){
+
+            //code block
+
+        }
+        else if (condition 2)
+        {
+
+            //code block
+
+        }
+        else
+        {
+
+            //code block
+
+        }
+
+        //else if is used to give if else extra conditions, however only one block of code will be run
+        
+        */
+
+        /*
+        
+        switch(expression)
+        {
+
+            declarations
+
+        case 0:
+        
+            //code here
+
+            break; 
+
+        case 1:
+
+            //code here
+
+            break;
+
+        case 2:
+
+            //code here
+
+            break;
+
+        case 3
+
+            //code here
+
+            break;
+
+        };
+
+        //break used to make sure that it doesnt repeat and go through the other cases after.
+        //used best in multiple choice scenarios
+
+        */
+
+        //if, while, do and for can all be nested into other loops
+
+        //break;
+        //break; breaks the current loop and continues the code from after the code
+        //continue;
+        //contunue; will go to the end of the loop prematurely 
+
+
+
+
 
     }
 

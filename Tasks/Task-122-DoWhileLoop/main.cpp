@@ -27,7 +27,7 @@ int main()
     printf("scanf found %d hits\n",hits);
     printf("Grade entered = %d\n", grade);
     greenLED = 1;
-    
+    redLED = 1;
     //Loop forever
     while (true);
 }
