@@ -57,6 +57,8 @@ int main()
         //allows you to get switch information from D3, under the variable sw1
         DigitalIn sw2(D4);
         //allows you to get switch information from D4, under the variable sw2
+        DigitalIn ButtonA(PG_0); //Button A
+        DigitalIn ButtonB(PG_1); //Button B
         BusIn switches(D3,D4);
         //same principle as bus out but for inputs, 
 
@@ -155,6 +157,9 @@ int main()
         int count = 0;
         printf("count = %d\n", count);
         // Integer
+
+        volatile int counte = 0;
+        //It tells the compiler that the value of the variable may change at any time-without any action being taken by the code the compiler finds nearby
 
         count = count + 1;
         printf("New value of count = %d\n", count);
