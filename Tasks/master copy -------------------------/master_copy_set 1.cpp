@@ -63,9 +63,20 @@ int main()
         //same principle as bus out but for inputs, 
 
 
+        Timer tmr;
+    
+            tmr.reset();
+            tmr.start();
+            while (tmr.elapsed_time() < 250ms);
+            tmr.stop();
+        //timer code
 
-
-
+        //sleep();
+        //stops the code till a hardware interupt, so an input
+        //or a hardware timer
+        InterruptIn btnA(BTN1_PIN);//sets up an interrupt into the code
+        InterruptIn btnB(BTN2_PIN);
+        Ticker tick;
 
 
 
@@ -83,6 +94,13 @@ int main()
         DigitalOut led2(LED2);
         DigitalOut led3(LED3);
         //setting other leds to be used via the variables led2 and led3
+
+        //Dual Digit 7-segment Display
+        LatchedLED disp(LatchedLED::SEVEN_SEG);
+        //Turn ON the 7-segment display
+         disp.enable(true);
+        //Update display
+           disp = count;
 
         BusOut lights(PC_2, PC_3, PC_6);
         //BusOut lights, using multiple outputs at once
@@ -391,7 +409,7 @@ int main()
 
         //break used to make sure that it doesnt repeat and go through the other cases after.
         //used best in multiple choice scenarios
-
+        //case refers to expressions value
         */
 
         //if, while, do and for can all be nested into other loops
