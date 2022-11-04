@@ -1,4 +1,8 @@
 #include "uop_msb.h"
+#include <chrono>
+#include <cstdint>
+using namespace uop_msb;
+using namespace chrono;
 using namespace uop_msb;
 LCD_16X2_DISPLAY lcd;
 #define WAIT_TIME_MS 1000 
@@ -27,7 +31,8 @@ BusOut lights(PC_2, PC_3, PC_6);
 //this would use the same lights as the Bus out
 //the difference being, between the outputs of Busout there is the smallest delay, with Port out the switch is perfectly simultanious
 
-
+LatchedLED ledDisp(LatchedLED::STRIP);
+//for the led strips to output
 
 
 int main()
@@ -59,6 +64,19 @@ int main()
         //allows you to get switch information from D4, under the variable sw2
         DigitalIn ButtonA(PG_0); //Button A
         DigitalIn ButtonB(PG_1); //Button B
+        
+        AnalogIn pot(AN_POT_PIN);
+        //sets a potentiometer input through the pot variable
+        AnalogIn ldr(AN_LDR_PIN);
+        //sets a LDR input through the ldr variable from the LDrs pin
+        AnalogIn mic(MIC_AN_PIN);
+        //set a microphone input into mic variable
+        unsigned short potVal   = pot.read_u16();
+        unsigned short lightVal = ldr.read_u16();
+        unsigned short micVal   = mic.read_u16(); 
+        //Read Analog to Digital Converter values (16 bit)
+
+        
         BusIn switches(D3,D4);
         //same principle as bus out but for inputs, 
 
@@ -170,6 +188,32 @@ int main()
         // wait 1 second
 
 
+    //Test LED Bar Display
+    ledDisp.enable(true);
+
+    ledDisp.setGroup(LatchedLED::LEDGROUP::RED);
+    for (unsigned int n=0; n<8; n++) {
+        ledDisp = 1 << n;
+        wait_us(250000);
+    }
+    ledDisp = 0;
+
+    ledDisp.setGroup(LatchedLED::LEDGROUP::GREEN);
+    for (unsigned int n=0; n<8; n++) {
+        ledDisp = 1 << n;
+        wait_us(250000);
+    }
+    ledDisp = 0;
+    
+    ledDisp.setGroup(LatchedLED::LEDGROUP::BLUE);
+    for (unsigned int n=0; n<8; n++) {
+        ledDisp = 1 << n;
+        wait_us(250000);
+    }     
+    ledDisp = 0;
+    //for the led strips to go up, one lne at a time
+
+    
         //-------------------------------variables --------------------------------------
 
         int count = 0;
