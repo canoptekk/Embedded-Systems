@@ -112,7 +112,11 @@ int main()
         DigitalOut led2(LED2);
         DigitalOut led3(LED3);
         //setting other leds to be used via the variables led2 and led3
-
+        printf("--------------------------------\n");
+        printf("Potentiometer: %X\n", potVal);
+        printf("Light Dependant Resistor: %X\n", lightVal);
+        printf("Microphone: %X\n", micVal);   
+        //printing the microphone, potentiometer and LDRs values
 
 
         //1. Printing a string
@@ -395,6 +399,9 @@ int main()
         //It stores real numbers with precision upto 15 decimal places. It takes 8 bytes of memory
 
         //variables can overflow and go from the highest to the lowest value
+
+        //Read Analog to Digital Converter values (16 bit)
+        unsigned short potVal   = pot.read_u16();
 
 
         count++ ;
