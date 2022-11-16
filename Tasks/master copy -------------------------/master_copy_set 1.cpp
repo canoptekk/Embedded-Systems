@@ -112,6 +112,7 @@ int main()
         DigitalOut led2(LED2);
         DigitalOut led3(LED3);
         //setting other leds to be used via the variables led2 and led3
+<<<<<<< HEAD
         printf("--------------------------------\n");
         printf("Potentiometer: %X\n", potVal);
         printf("Light Dependant Resistor: %X\n", lightVal);
@@ -250,6 +251,8 @@ int main()
 //same as prior code however for c ++ in particular
 
 
+=======
+>>>>>>> parent of 9646273 (Update master_copy_set 1.cpp)
 
         //Dual Digit 7-segment Display
         LatchedLED disp(LatchedLED::SEVEN_SEG);
@@ -426,13 +429,6 @@ int main()
 
         unsigned char ucbyte = 0b10100011;
         ucbyte ^= 0b01000000; //toggle pin 7 using Xor
-
-        //forming an array
-        for (unsigned int m=0; m<100; m++) {
-            unsigned short ldrVal   = ldr.read_u16();
-            samples[m] = ldrVal;
-            wait_us(10000);          // 10ms
-        }
 
 
 
